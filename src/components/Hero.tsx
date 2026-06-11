@@ -23,7 +23,7 @@ export function Hero() {
         <div className="z-50 flex w-full max-w-5xl flex-col items-center pt-10 text-center md:pt-8 lg:pt-6">
           <Link
             href="/projects/fraud-detection"
-            className="mb-8 inline-flex max-w-full items-center gap-2 rounded-full border border-black/10 bg-black/5 px-3 py-1.5 text-sm font-medium text-neutral-700 backdrop-blur-md transition-colors hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:text-neutral-300 dark:hover:bg-white/10"
+            className="mb-8 mt-14 inline-flex max-w-full items-center gap-2 rounded-full border border-black/10 bg-black/5 px-3 py-1.5 text-sm font-medium text-neutral-700 backdrop-blur-md transition-colors hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:text-neutral-300 dark:hover:bg-white/10 md:mt-12 lg:mt-10"
           >
             <span className="inline-flex items-center gap-1 rounded-full bg-blue-600 px-2 py-0.5 text-xs font-semibold text-white">
               <Sparkles className="h-3 w-3" />
