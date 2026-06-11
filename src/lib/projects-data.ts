@@ -1,3 +1,11 @@
+export type ProjectLinkType = 'website' | 'dashboard' | 'demo' | 'source';
+
+export interface ProjectExternalLink {
+  type: ProjectLinkType;
+  label: string;
+  url: string;
+}
+
 export interface ProjectDetail {
   slug: string;
   number: string;
@@ -20,6 +28,12 @@ export interface ProjectDetail {
   challenge: string;
   solution: string;
   results: string;
+  visualization: {
+    label: string;
+    caption: string;
+    insight: string;
+  };
+  links?: ProjectExternalLink[];
   liveLink?: string;
   githubLink?: string;
   media?: {
@@ -53,6 +67,11 @@ export const projectsData: Record<string, ProjectDetail> = {
     challenge: 'Banking compliance requires deep audit trails. The challenge was processing 2.7M+ transactions and 481MB of raw data while ensuring every flagged item was accompanied by a narrative explanation that complied with Indonesian banking standards.',
     solution: 'I built a machine learning engine using XGBoost for precise classification and FastAPI for a high-concurrency backend. The frontend, a Next.js dashboard, allows auditors to drill down into specific transactions and read human-readable justifications generated through my custom narrative logic.',
     results: 'The system achieved sub-minute processing times for massive datasets and provided a significant leap in operational transparency, effectively bridging the gap between quantitative risk calculation and qualitative audit requirements.',
+    visualization: {
+      label: 'Risk review dashboard',
+      caption: 'Fraud detection dashboard preview',
+      insight: 'A transaction-level control room for reviewing model confidence, audit narratives, and flagged banking behavior.'
+    },
     media: [{ type: 'image', url: '/fraud_detection_ui_1776955039840.png', caption: 'Fraud detection dashboard preview' }],
   },
   'hr-optimization': {
@@ -78,6 +97,11 @@ export const projectsData: Record<string, ProjectDetail> = {
     challenge: 'High turnover (16.65%) was threatening service continuity. The management needed to know exactly why specialists were leaving and how productivity fluctuated across different tenure lengths.',
     solution: 'I cleaned and analyzed large HR datasets using SQL to discover that turnover peaked at the 17-month mark. I then built high-fidelity Tableau dashboards that visualized these trends alongside revenue-per-patient metrics to provide a clear picture of workforce ROI.',
     results: 'The project identified Rp368.87K as the ideal revenue-per-patient benchmark and pinpointed specific inefficiency areas, leading to a 10% reduction in operational friction and better-informed recruitment policies.',
+    visualization: {
+      label: 'Workforce KPI dashboard',
+      caption: 'Workforce analytics dashboard preview',
+      insight: 'A management-facing view of turnover, tenure risk, revenue per patient, and retention pressure points.'
+    },
     media: [{ type: 'image', url: '/hr_analytics_dashboard_1776955061858.png', caption: 'Workforce analytics dashboard preview' }],
   },
   'stock-analysis': {
@@ -103,6 +127,11 @@ export const projectsData: Record<string, ProjectDetail> = {
     challenge: 'The tech sector is highly volatile. Creating a portfolio that captures growth without exposing investors to excessive drawdown required a rigorous mathematical approach to asset allocation.',
     solution: 'I gathered 12 years of market data and applied the Markowitz Efficient Frontier model using Python. By calculating the covariance and expected returns, I identified the "Tangency Portfolio" and visualized the risk-return tradeoff through Tableau dashboards.',
     results: 'The resulting portfolio achieved an 11% higher CAGR compared to industry standard tech-sector ETFs. This demonstrated the power of using strategic data optimization to drive superior financial impact.',
+    visualization: {
+      label: 'Portfolio risk dashboard',
+      caption: 'Portfolio optimization dashboard preview',
+      insight: 'A risk-return workspace for comparing asset allocation, volatility, benchmark performance, and optimized weights.'
+    },
     media: [{ type: 'image', url: '/stock_analysis_ui_1776955201079.png', caption: 'Portfolio optimization dashboard preview' }],
   },
   'energy-forecasting': {
@@ -127,6 +156,11 @@ export const projectsData: Record<string, ProjectDetail> = {
     challenge: 'Predicting fiscal outcomes in the energy sector requires navigating complex tax regimes and production fluctuations. The challenge was creating a transparent yet robust DCF model that could handle multiple sensitivity scenarios.',
     solution: 'I built automated strategic models in Excel that integrated production data with fiscal parameters. I also presented these findings to stakeholders to drive data-driven capital allocation decisions.',
     results: 'Identified a 5% baseline for cost streamlining and provided a scalable framework for evaluating the financial viability of future drilling projects.',
+    visualization: {
+      label: 'Forecasting model view',
+      caption: 'Energy forecasting model preview',
+      insight: 'A scenario-planning view for PSC assumptions, fiscal sensitivity, asset life, and operational efficiency levers.'
+    },
     media: [{ type: 'image', url: '/energy_forecasting_ui_1776955325347.png', caption: 'Energy forecasting model preview' }],
   }
 };
@@ -134,3 +168,13 @@ export const projectsData: Record<string, ProjectDetail> = {
 export const projects = Object.values(projectsData).sort((a, b) =>
   a.number.localeCompare(b.number)
 );
+
+export function getProjectLinks(project: ProjectDetail): ProjectExternalLink[] {
+  const configuredLinks = project.links ?? [];
+  const legacyLinks: ProjectExternalLink[] = [
+    project.liveLink ? { type: 'demo', label: 'Live Demo', url: project.liveLink } : undefined,
+    project.githubLink ? { type: 'source', label: 'Source', url: project.githubLink } : undefined,
+  ].filter((link): link is ProjectExternalLink => Boolean(link));
+
+  return [...configuredLinks, ...legacyLinks];
+}

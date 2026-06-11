@@ -12,13 +12,13 @@ export function AboutHero() {
 
         <div className="prose dark:prose-invert prose-lg max-w-none text-neutral-600 dark:text-neutral-400 font-light leading-relaxed">
           <p className="mb-6">
-            I am a Data-driven Economics student at Universitas Gadjah Mada with a passion for bridging the gap between quantitative analytics and technology solutions. My experience ranges from developing full-stack applications with FastAPI and Next.js to building complex financial models that optimize resource efficiency.
+            I am a data-driven professional with a foundation in financial planning, data analytics, and strategic decision-making. My work sits between business context and technical execution: building models, dashboards, and reports that make complex data useful for stakeholders.
           </p>
           <p className="mb-6">
-            With a strong foundation in Python, SQL, and strategic consulting, I focus on creating sustainable business solutions. Whether it&apos;s detecting real-time financial fraud or streamlining costs in the renewable energy sector, I strive to translate complex data into actionable insights.
+            My experience spans financial planning at Harbour Energy, project strategy with 180 Degrees Consulting UGM, and analytics projects across fraud detection, workforce optimization, and portfolio risk modeling. I use Python, SQL, Tableau, and financial modeling to turn messy evidence into clear decisions.
           </p>
           <p className="text-black dark:text-white font-medium text-xl font-serif italic mb-10">
-            Leveraging technology and data to build a more efficient and sustainable future.
+            Combining finance, analytics, and communication to drive practical business decisions.
           </p>
         </div>
 

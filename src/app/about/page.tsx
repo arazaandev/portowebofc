@@ -8,7 +8,7 @@ import { FooterCTA } from "@/components/FooterCTA";
 export const metadata: Metadata = {
   title: "About | Journey, Skills & Experience - Daffa Arazaan",
   description:
-    "Learn about Daffa Arazaan — a Data-driven Economics student at Universitas Gadjah Mada with a passion for bridging the gap between quantitative analytics and technology solutions.",
+    "Learn about Daffa Arazaan, a data-driven economics and analytics professional with finance, consulting, and dashboard experience.",
 };
 
 export default function AboutPage() {

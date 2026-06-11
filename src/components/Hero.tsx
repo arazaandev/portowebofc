@@ -1,64 +1,82 @@
 "use client";
+
 import React from "react";
-import { LampContainer } from "./LampEffect";
-import { Copy, ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, Check, Copy, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { LampContainer } from "./LampEffect";
+
+const EMAIL = "daffaulayafaros@gmail.com";
 
 export function Hero() {
+  const [copied, setCopied] = React.useState(false);
+
+  const copyEmail = async () => {
+    await navigator.clipboard.writeText(EMAIL);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1800);
+  };
+
   return (
-    <div className="relative w-full mb-10 pt-20">
-      <LampContainer>
-        <div className="flex flex-col items-center text-center justify-center z-50">
-
-          {/* Status Badge referencing your recent/upcoming RevoU program */}
-          <div className="mb-8 flex items-center justify-center space-x-2 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full px-3 py-1.5 backdrop-blur-md">
-            <span className="bg-blue-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full">Project</span>
-            <span className="text-sm text-neutral-600 dark:text-neutral-300 font-medium">Fraud Detection System live now</span>
-            <ChevronRight className="w-4 h-4 text-neutral-500 dark:text-neutral-400" />
-          </div>
-
-          <h1 className="mt-8 text-5xl md:text-7xl font-serif leading-tight mb-4 tracking-tighter text-neutral-900 dark:text-white">
-            <span className="text-neutral-950 dark:text-white">
-              Data that tells stories.
+    <section className="relative w-full">
+      <LampContainer className="min-h-[820px]">
+        <div className="z-50 flex w-full max-w-5xl flex-col items-center text-center">
+          <Link
+            href="/projects/fraud-detection"
+            className="mb-8 inline-flex max-w-full items-center gap-2 rounded-full border border-black/10 bg-black/5 px-3 py-1.5 text-sm font-medium text-neutral-700 backdrop-blur-md transition-colors hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:text-neutral-300 dark:hover:bg-white/10"
+          >
+            <span className="inline-flex items-center gap-1 rounded-full bg-blue-600 px-2 py-0.5 text-xs font-semibold text-white">
+              <Sparkles className="h-3 w-3" />
+              Featured
             </span>
-            <br />
-            <span className="italic text-neutral-700 dark:text-neutral-300 font-medium">
-              Economics that drives impact.
-            </span>
+            <span className="truncate">Featured case study - Financial fraud detection system</span>
+            <ArrowRight className="h-4 w-4 shrink-0 text-neutral-500 dark:text-neutral-400" />
+          </Link>
+
+          <h1 className="max-w-4xl text-5xl font-serif leading-[0.98] tracking-tight text-neutral-950 dark:text-white md:text-7xl lg:text-8xl">
+            Data products with economic judgment.
           </h1>
 
-          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 mt-8 mb-12">
-            <div className="text-xl md:text-2xl text-neutral-700 dark:text-neutral-300 font-light flex items-center gap-3">
-              Hello, I&apos;m Daffa Arazaan
-              <Image 
-                src="/avatar.jpg" 
-                alt="Daffa Arazaan" 
-                width={40} 
-                height={40} 
-                className="rounded-full border border-neutral-200 dark:border-white/20 object-cover ml-2"
-              />
-              <span className="ml-2">an Economics & Data Professional</span>
+          <p className="mt-8 max-w-2xl text-base font-light leading-8 text-neutral-600 dark:text-neutral-300 md:text-xl">
+            I turn messy business data into explainable systems, dashboards, and strategic decisions.
+          </p>
+
+          <div className="mt-8 flex flex-col items-center gap-4 rounded-[2rem] border border-panel-border bg-background/70 p-3 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.45)] backdrop-blur md:flex-row">
+            <Image
+              src="/avatar.jpg"
+              alt="Daffa Arazaan"
+              width={56}
+              height={56}
+              className="h-14 w-14 rounded-full border border-panel-border object-cover grayscale transition-all hover:grayscale-0"
+              priority
+            />
+            <div className="px-2 text-center md:text-left">
+              <p className="text-sm font-semibold text-foreground">Hello, I&apos;m Daffa Arazaan</p>
+              <p className="text-xs text-muted-foreground">Economics student, data analyst, and full-stack analytics builder</p>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-6 mt-4">
-            <Link href="/projects" className="group relative flex items-center justify-center space-x-2 bg-gradient-to-b from-black/10 to-black/5 dark:from-white/20 dark:to-white/5 backdrop-blur-md border border-black/10 dark:border-white/20 text-neutral-900 dark:text-white rounded-full px-6 py-3 font-medium transition-all hover:scale-105 hover:bg-black/5 dark:hover:bg-white/10 overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.05)] dark:!shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-              <span>View Portfolio</span>
-              <div className="bg-neutral-900 text-white dark:bg-white dark:text-black p-1.5 rounded-full ml-2 group-hover:bg-neutral-700 dark:group-hover:bg-neutral-200 transition-colors">
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
-            <div
-              className="flex items-center space-x-2 text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer text-sm"
-              onClick={() => navigator.clipboard.writeText('daffaulayafaros@gmail.com')}
+          <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row">
+            <Link
+              href="/projects"
+              className="group inline-flex w-full items-center justify-center gap-3 rounded-full bg-foreground px-6 py-3 font-medium text-background transition-transform hover:scale-[1.03] sm:w-auto"
             >
-              <Copy className="w-4 h-4" />
-              <span>daffaulayafaros@gmail.com</span>
-            </div>
+              View case studies
+              <span className="rounded-full bg-background/15 p-1.5 transition-transform group-hover:translate-x-1">
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </Link>
+            <button
+              type="button"
+              onClick={copyEmail}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-panel-border px-6 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground sm:w-auto"
+            >
+              {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
+              {copied ? "Email copied" : EMAIL}
+            </button>
           </div>
         </div>
       </LampContainer>
-    </div>
+    </section>
   );
 }
