@@ -26,7 +26,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="fixed top-6 left-0 right-0 z-50 px-6 md:px-12 w-full max-w-7xl mx-auto">
+    <nav className="fixed top-6 left-0 right-0 z-[100] px-6 md:px-12 w-full max-w-7xl mx-auto">
       <div className="flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group" onClick={() => setMobileOpen(false)}>
           <span className="font-bold text-2xl tracking-tighter text-foreground">DA</span>
