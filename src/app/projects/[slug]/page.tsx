@@ -116,6 +116,16 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                       sizes="(max-width: 768px) 100vw, 320px"
                     />
                   </div>
+                ) : primaryMedia?.type === 'embed' ? (
+                  <div className="aspect-[4/3] bg-background">
+                    <iframe
+                      src={primaryMedia.url}
+                      title={primaryMedia.caption}
+                      className="h-full w-full border-0"
+                      loading="lazy"
+                      allowFullScreen
+                    />
+                  </div>
                 ) : (
                   <div className="flex aspect-[4/3] items-center justify-center bg-foreground/5">
                     <BarChart className="w-10 h-10 text-muted-foreground" />
@@ -233,6 +243,19 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                       {primaryMedia.caption}
                     </figcaption>
                   </figure>
+                ) : primaryMedia?.type === 'embed' ? (
+                  <figure className="relative aspect-video w-full overflow-hidden rounded-2xl border border-panel-border bg-neutral-100 dark:bg-neutral-900">
+                    <iframe
+                      src={primaryMedia.url}
+                      title={primaryMedia.caption}
+                      className="h-full w-full border-0"
+                      loading="lazy"
+                      allowFullScreen
+                    />
+                    <figcaption className="absolute bottom-3 left-3 rounded-full border border-panel-border bg-background/80 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
+                      {primaryMedia.caption}
+                    </figcaption>
+                  </figure>
                 ) : (
                   <div className="aspect-video w-full rounded-2xl bg-neutral-100 dark:bg-neutral-900 border border-panel-border overflow-hidden flex items-center justify-center relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent"></div>
@@ -282,7 +305,7 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                         <iframe
                           src={primaryMedia.url}
                           title={primaryMedia.caption}
-                          className="h-full w-full"
+                          className="h-full w-full border-0"
                           loading="lazy"
                           allowFullScreen
                         />

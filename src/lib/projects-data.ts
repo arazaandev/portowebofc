@@ -53,7 +53,7 @@ export const projectsData: Record<string, ProjectDetail> = {
     cardTitle: 'Financial Fraud Detection',
     shortDescription: 'Processing 2.7M+ transactions using XGBoost and translating AI outputs into clear banking narratives via a FastAPI/Next.js dashboard.',
     cardDescription: 'Processed 2.7M+ transactions using XGBoost; engineered 481MB data cleaning in under 60s for banking audit transparency.',
-    image: '/fraud_detection_ui_1776955039840.png',
+    image: '/fraud_dashboard_live_preview.png',
     color: 'bg-blue-600/20',
     glow: 'shadow-[0_0_30px_rgba(37,99,235,0.2)]',
     longDescription: 'Developed an end-to-end analytical pipeline to detect illicit financial patterns while ensuring regulatory transparency. The primary objective was to move beyond "black-box" AI by building a system that explicitly explains its reasoning to human auditors.',
@@ -72,7 +72,14 @@ export const projectsData: Record<string, ProjectDetail> = {
       caption: 'Fraud detection dashboard preview',
       insight: 'A transaction-level control room for reviewing model confidence, audit narratives, and flagged banking behavior.'
     },
-    media: [{ type: 'image', url: '/fraud_detection_ui_1776955039840.png', caption: 'Fraud detection dashboard preview' }],
+    links: [
+      {
+        type: 'demo',
+        label: 'Live Demo',
+        url: 'https://fraud-project-beta.vercel.app/',
+      },
+    ],
+    media: [{ type: 'embed', url: 'https://fraud-project-beta.vercel.app/', caption: 'Live fraud detection dashboard' }],
   },
   'hr-optimization': {
     slug: 'hr-optimization',
